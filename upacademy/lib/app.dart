@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'features/auth/Screens/Sign_up.dart';
+import 'package:upacademy/features/auth/Screens/On_boading_screen_1.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -7,6 +7,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: SignUpScreen());
+        debugShowCheckedModeBanner: false, home: OnBoardingScreen1());
   }
 }

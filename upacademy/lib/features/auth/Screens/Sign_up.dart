@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:upacademy/core/utils/app_color.dart';
 import 'package:upacademy/core/utils/app_images.dart';
 import 'package:upacademy/core/utils/app_strings.dart';
+import 'package:upacademy/features/auth/Screens/On_boading_screen_1.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -74,7 +75,7 @@ class SignUpScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                   prefixIcon: const Icon(Icons.lock_outline),
                   suffixIcon: Icon(Icons.visibility_off),
-                  hintText: 'Password',
+                  labelText: 'Password',
                 ),
               ),
             ),
@@ -92,7 +93,12 @@ class SignUpScreen extends StatelessWidget {
               height: 50,
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const OnBoardingScreen1()));
+                },
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),

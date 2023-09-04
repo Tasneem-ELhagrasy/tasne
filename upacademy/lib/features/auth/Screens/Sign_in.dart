@@ -58,7 +58,7 @@ class SignInScreen extends StatelessWidget {
                   border: OutlineInputBorder(),
                   prefixIcon: const Icon(Icons.lock),
                   suffixIcon: Icon(Icons.visibility_off),
-                  hintText: 'Password',
+                  labelText: 'Password',
                 ),
               ),
             ),
