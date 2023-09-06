@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1084143677236",
+    "project_id": "up-academy-51472",
+    "storage_bucket": "up-academy-51472.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084143677236:android:01eba70324e0e44615bf61",
+        "android_client_info": {
+          "package_name": "com.example.flutter_ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084143677236-nd7rtunqcc1rfgqlq1r94vv43n09u7hm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTZlKjtZn3B1GvK1jhhg4BNV4-hyMq8Vk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084143677236-nd7rtunqcc1rfgqlq1r94vv43n09u7hm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

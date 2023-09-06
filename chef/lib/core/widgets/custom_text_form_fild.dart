@@ -28,11 +28,13 @@ class CustomTextFormField extends StatelessWidget {
       validator: validate,
       decoration: InputDecoration(
         hintText: hint,
+        hintStyle: const TextStyle(color: AppColors.gray),
         labelText: lable,
         suffixIcon: IconButton(
           onPressed: suffixiIconOnPressed,
           icon: Icon(
             icon,
+            color: AppColors.gray,
           ),
         ),
       ),

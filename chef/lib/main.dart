@@ -1,4 +1,5 @@
 import 'package:chef/core/database/cache/cache_helper.dart';
+import 'package:chef/features/auth/presentation/cubit/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'app/app.dart';
@@ -10,8 +11,15 @@ void main() async {
   initServiceLoactor();
   await sl<CacheHelper>().init();
 
-  runApp(BlocProvider(
-    create: (context) => sl<GlobalCubit>()..getCachedLang(),
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (context) => sl<GlobalCubit>()..getCachedLang(),
+      ),
+      BlocProvider(
+        create: (context) => sl<LoginCubit>(),
+      ),
+    ],
     child: const MyApp(),
   ));
 }
