@@ -1,5 +1,6 @@
 import 'package:chef/core/database/cache/cache_helper.dart';
-import 'package:chef/features/auth/presentation/cubit/cubit/login_cubit.dart';
+import 'package:chef/features/auth/presentation/cubit/cubit/forget_password_cubit/cubit/forget_password_cubit.dart';
+import 'package:chef/features/auth/presentation/cubit/cubit/login_cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'app/app.dart';
@@ -18,6 +19,9 @@ void main() async {
       ),
       BlocProvider(
         create: (context) => sl<LoginCubit>(),
+      ),
+      BlocProvider(
+        create: (context) => sl<ForgetPasswordCubit>(),
       ),
     ],
     child: const MyApp(),

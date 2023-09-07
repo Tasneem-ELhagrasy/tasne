@@ -1,16 +1,19 @@
 import 'package:chef/core/local/app_local.dart';
+import 'package:chef/core/routes/app_routes.dart';
 import 'package:chef/core/uitls/app_assets.dart';
 
 import 'package:chef/core/uitls/app_string.dart';
+import 'package:chef/core/uitls/commends.dart';
 import 'package:chef/core/widgets/custom_image.dart';
 import 'package:chef/features/auth/presentation/cubit/componanents/screens/chang_longe.dart';
-import 'package:chef/features/auth/presentation/cubit/cubit/login_cubit.dart';
+import 'package:chef/features/auth/presentation/cubit/cubit/login_cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../core/widgets/custom_loading_indecator.dart';
 import '../../../../../../core/widgets/custom_text_form_fild.dart';
-import '../../cubit/login_state.dart';
+import '../../cubit/login_cubit/login_state.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -40,7 +43,16 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: BlocConsumer<LoginCubit, LoginState>(
-                  listener: (context, state) {},
+                  listener: (context, state) {
+                    if (state is LoginSucssState) {
+                      toast(
+                          message: AppString.loginSucessfully.tr(context),
+                          state: ToastStates.success);
+                    }
+                    if (state is LoginErrorState) {
+                      toast(message: state.message, state: ToastStates.error);
+                    }
+                  },
                   builder: (context, state) {
                     return Form(
                       key: BlocProvider.of<LoginCubit>(context).loginKey,
@@ -83,21 +95,32 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(height: 24.h),
                           Row(
                             children: [
-                              Text(
-                                AppString.forgetPassword.tr(context),
+                              TextButton(
+                                onPressed: () {
+                                  navigate(
+                                      context: context, route: Routes.sendCode);
+                                },
+                                child: Text(
+                                  AppString.forgetPassword.tr(context),
+                                ),
                               ),
                               SizedBox(height: 32.h),
                             ],
                           ),
-                          CustomButton(
-                            onPressed: () {
-                              if (BlocProvider.of<LoginCubit>(context)
-                                  .loginKey
-                                  .currentState!
-                                  .validate()) {}
-                            },
-                            text: AppString.signIn.tr(context),
-                          ),
+                          state is LoginLoadingState
+                              ? const CustomLoadingIndecator()
+                              : CustomButton(
+                                  onPressed: () {
+                                    if (BlocProvider.of<LoginCubit>(context)
+                                        .loginKey
+                                        .currentState!
+                                        .validate()) {
+                                      BlocProvider.of<LoginCubit>(context)
+                                          .login();
+                                    }
+                                  },
+                                  text: AppString.signIn.tr(context),
+                                ),
                         ],
                       ),
                     );

@@ -1,9 +1,16 @@
+import 'package:chef/core/database/cache/cache_helper.dart';
 import 'package:dio/dio.dart';
+
+import '../../service/service_locator.dart';
+import 'end_points.dart';
 
 class ApiInterCeptors extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    // TODO: implement onRequest
+    options.headers[ApiKeys.token] =
+        sl<CacheHelper>().getData(key: ApiKeys.token) != null
+            ? 'FOODAPI ${sl<CacheHelper>().getData(key: 'token')}'
+            : null;
     super.onRequest(options, handler);
   }
 

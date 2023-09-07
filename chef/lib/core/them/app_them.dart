@@ -36,5 +36,11 @@ ThemeData getAppTheme() {
 
         // fillColor: AppColors.deepBlack,
         // filled: true,
-      ));
+      ),
+      textButtonTheme: TextButtonThemeData(
+          style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(AppColors.gray),
+              textStyle: MaterialStateProperty.all(
+                boldStyle(color: AppColors.gray, fontSize: 16),
+              ))));
 }
